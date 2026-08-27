@@ -3,13 +3,22 @@ import { config } from '../config/config.js';
 
 export async function abrirProtheus(): Promise<{ browser: Browser; page: Page }> {
   const browser = await chromium.launch({ headless: config.headless });
-  const page = await browser.newPage();
 
-  await page.goto(config.urlProtheus);
-  await page.waitForTimeout(5000);
-  await page.getByRole('button', { name: 'Ok' }).click();
+  try {
 
-  return { browser, page };
+    const page = await browser.newPage();
+
+    await page.goto(config.urlProtheus);
+    await page.waitForTimeout(5000);
+    await page.getByRole('button', { name: 'Ok' }).click();
+
+    return { browser, page };
+
+  } catch (error) {
+    await browser.close()
+    throw error;
+  }
+
 }
 
 export async function abrirImportador(page: Page): Promise<void> {

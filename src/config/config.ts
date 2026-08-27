@@ -1,7 +1,10 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 export const config = {
-  urlProtheus: 'https://protheus.funpar.ufpr.br/webapp/',
-  termoBusca: 'IMPORTADOR 2.0',
-  caminhoAcom075: 'C:/temp/acom075.xml',
-  pastaImportador: 'G:/00 - Entrada de Documentos fiscais/001 - FISCAL/012 - IMPORTADOR DIA A DIA',
+  urlProtheus: process.env.URLPROTHEUS as string,
+  termoBusca: process.env.TERMOBUSCA as string,
+  caminhoAcom075: process.env.CAMINHOACOM075 as string,
+  pastaImportador: process.env.PASTAIMPORTADOR as string,
   headless: true,
 } as const;

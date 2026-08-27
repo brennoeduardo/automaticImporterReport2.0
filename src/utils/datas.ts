@@ -9,10 +9,16 @@ function formatarData(data: Date): string {
   return `${dia}/${mes}/${data.getFullYear()}`;
 }
 
-export function obterPeriodoImportacao(): Periodo {
-  const hoje = new Date();
+export function obterPeriodoImportacao(inicial?: string, final?: string): Periodo {
+  // se passar as duas datas manualmente, usa elas (modo retroativo)
+  if (inicial && final) {
 
-  // Na segunda buscamos de sexta a domingo; nos outros dias, só o dia anterior.
+    console.log("--- RODANDO PERIODO RETROATIVO ---", `${inicial} A ${final}`)
+
+    return { dataInicial: inicial, dataFinal: final };
+  }
+
+  const hoje = new Date();
   const diasParaInicio = hoje.getDay() === 1 ? 3 : 1;
 
   const dataInicial = new Date(hoje);
