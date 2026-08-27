@@ -11,10 +11,10 @@ import { comRetry } from './utils/retry.js';
 async function run() {
 
   // automático 
-  // const periodo = obterPeriodoImportacao();
+  const periodo = obterPeriodoImportacao();
 
   // retroativo — passe as datas que quiser
-  const periodo = obterPeriodoImportacao('22/08/2026', '24/08/2026');
+  // const periodo = obterPeriodoImportacao('22/08/2026', '24/08/2026');
 
   console.log(`Período da importação: ${periodo.dataInicial} a ${periodo.dataFinal}`);
 
